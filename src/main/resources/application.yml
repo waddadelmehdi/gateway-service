@@ -1,0 +1,19 @@
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: r1
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path= /clients/**
+        - id: r2
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path= /products/**
+        - id: r3
+          uri: lb://FACTURE-SERVICE
+          predicates:
+            - Path= /factures/**
+
